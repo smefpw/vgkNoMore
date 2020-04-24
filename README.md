@@ -2,4 +2,4 @@
 An application which is designed to disable Riot Games Vanguard, by editing it's service config.
 Requires restart.
 
-The service cannot be stopped, I have already attempted to.
+The service cannot be stopped in the current session, I have already attempted to.
