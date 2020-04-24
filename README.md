@@ -4,7 +4,8 @@ Requires restart.
 
 The service cannot be stopped in the current session, I have already attempted to.
 
-This program is riddled with inconsistent MessageBox error messages or console error messages. I cannot decide what I like more :/
+This program is riddled with inconsistent MessageBox error messages or console error messages. I cannot decide what I like more :/.
+Tbf this whole source is an inconsistent mess.
 
 # Credits:
 https://github.com/ikalnytskyi/termcolor
