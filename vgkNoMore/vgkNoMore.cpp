@@ -80,7 +80,7 @@ int main()
 		}
 	}
 
-	if ((service_controller::get_vgk_status() == SERVICE_RUNNING && service_controller::do_query_svc() == SERVICE_DISABLED) || 
+	if (service_controller::get_vgk_status() == SERVICE_RUNNING && service_controller::do_query_svc() == SERVICE_DISABLED || 
 		service_controller::get_vgk_status() == SERVICE_STOPPED && service_controller::do_query_svc() == SERVICE_SYSTEM_START)
 	{
 		const int msg_box = MessageBox(nullptr, "A system restart is required to append changes made to Vanguard service.\nDo you wish to restart now?.", "vgkNoMore", MB_ICONERROR | MB_YESNO);
