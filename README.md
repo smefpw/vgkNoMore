@@ -3,3 +3,7 @@ An application which is designed to disable Riot Games Vanguard, by editing it's
 Requires restart.
 
 The service cannot be stopped in the current session, I have already attempted to.
+
+
+# Credits:
+https://github.com/ikalnytskyi/termcolor
