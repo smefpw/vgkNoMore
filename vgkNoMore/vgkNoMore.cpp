@@ -3,7 +3,7 @@
 
 int main()
 {
-	SetConsoleTitle("vgkNoMore v1.0-RELEASE | smef.pw");
+	SetConsoleTitle("vgkNoMore v1.0.1-RELEASE | smef.pw");
 
 	utilities::log_type(0);
 	std::cout << "Made with " << termcolor::red << "<3" << termcolor::white << " by smef.pw.\n";
