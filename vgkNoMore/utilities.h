@@ -26,7 +26,7 @@ namespace utilities
 			}
 			else
 			{
-				MessageBox(nullptr, "Unknown error - 100.\nThe program will now close.", "vgkNoMore",
+				MessageBox(nullptr, "GetTokenInformation failed. Program will close.", "vgkNoMore",
 					MB_ICONERROR | MB_OK);
 				return -1;
 			}
@@ -35,7 +35,7 @@ namespace utilities
 		}
 		else
 		{
-			MessageBox(nullptr, "Unknown error - 099.\nThe program will now close.", "vgkNoMore", MB_ICONERROR | MB_OK);
+			MessageBox(nullptr, "OpenProcessToken failed. Program will close.", "vgkNoMore", MB_ICONERROR | MB_OK);
 			return -1;
 		}
 

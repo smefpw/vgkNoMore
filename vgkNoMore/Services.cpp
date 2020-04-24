@@ -56,7 +56,7 @@ namespace service_controller
 		return service_status.dwCurrentState;
 	}
 
-    int do_query_svc() //pPaste from Microsoft.
+    int do_query_svc()
     {
         LPQUERY_SERVICE_CONFIG lpsc = nullptr;
         DWORD dwBytesNeeded, cbBufSize = 0, start_type = -1;

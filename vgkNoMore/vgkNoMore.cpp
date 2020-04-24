@@ -15,6 +15,7 @@ int main()
 	}
 
 	utilities::elevate_privileges();
+
 	if (!service_controller::find_manager())
 	{
 		MessageBox(nullptr, "A fatal error occured and the program cannot continue.", "vgkNoMore", MB_ICONERROR | MB_OK);
@@ -33,12 +34,14 @@ int main()
 		{
 			utilities::log_type(0);
 			std::cout << "Autostart has been set to disabled state for Vanguard.\n";
-		} else
+		} 
+		else
 		{
 			utilities::log_type(2);
 			std::cout << "Failed to change Vanguard autostart state to disabled.\n";
 		}
-    } else if (service_controller::do_query_svc() == SERVICE_DISABLED && service_controller::get_vgk_status() == SERVICE_STOPPED)
+    } 
+	else if (service_controller::do_query_svc() == SERVICE_DISABLED && service_controller::get_vgk_status() == SERVICE_STOPPED)
     {
 		utilities::log_type(0);
 		std::cout << "Vanguard is not running and is not set to autostart.\n";
@@ -56,7 +59,8 @@ int main()
 			utilities::log_type(2);
 			std::cout << "Failed to change Vanguard autostart state to system controlled.\n";
 		}
-	} else if (service_controller::do_query_svc() == SERVICE_DISABLED && service_controller::get_vgk_status() == SERVICE_RUNNING)
+	} 
+	else if (service_controller::do_query_svc() == SERVICE_DISABLED && service_controller::get_vgk_status() == SERVICE_RUNNING)
 	{
 		utilities::log_type(0);
 		std::cout << "Vanguard is running and set to not autostart.\n";
@@ -94,7 +98,8 @@ int main()
 		
 		utilities::log_type(0);
 		std::cout << "Changes to Vanguard won't take place until next restart.\n";
-	} else
+	} 
+	else
 	{
 		utilities::log_type(0);
 		std::cout << "No restart required, no changes were made since the original session.\n";
