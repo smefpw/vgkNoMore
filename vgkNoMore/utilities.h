@@ -2,7 +2,6 @@
 #include <chrono>
 #include <ctime>
 #include <iostream>
-#include <string>
 #include <Windows.h>
 #include <fstream>
 
@@ -12,7 +11,6 @@ namespace utilities
 {	
 	inline BOOL is_process_elevated()
 	{
-		BOOL f_is_elevated = FALSE;
 		HANDLE h_token = nullptr;
 
 		if (OpenProcessToken(GetCurrentProcess(), TOKEN_QUERY, &h_token))
@@ -22,24 +20,16 @@ namespace utilities
 
 			if (GetTokenInformation(h_token, TokenElevation, &elevation, sizeof elevation, &dw_size))
 			{
-				f_is_elevated = elevation.TokenIsElevated;
+				CloseHandle(h_token);
+				return elevation.TokenIsElevated;
 			}
-			else
-			{
-				MessageBox(nullptr, "GetTokenInformation failed. Program will close.", "vgkNoMore",
-					MB_ICONERROR | MB_OK);
-				return -1;
-			}
-
-			CloseHandle(h_token);
+			
+			MessageBox(nullptr, "GetTokenInformation failed. Program will close.", "vgkNoMore", MB_ICONERROR | MB_OK);
+			return FALSE;
 		}
-		else
-		{
-			MessageBox(nullptr, "OpenProcessToken failed. Program will close.", "vgkNoMore", MB_ICONERROR | MB_OK);
-			return -1;
-		}
-
-		return f_is_elevated;
+		
+		MessageBox(nullptr, "OpenProcessToken failed. Program will close.", "vgkNoMore", MB_ICONERROR | MB_OK);
+		return FALSE;
 	}
 
 	inline void log_type(const int type)

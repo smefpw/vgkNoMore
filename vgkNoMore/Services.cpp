@@ -46,7 +46,7 @@ namespace service_controller
 		SERVICE_STATUS_PROCESS service_status;
 		DWORD dw_bytes_needed = 0;
 
-		if (!QueryServiceStatusEx(sch_service, SC_STATUS_PROCESS_INFO, (LPBYTE)&service_status, sizeof(SERVICE_STATUS_PROCESS), &dw_bytes_needed))
+		if (!QueryServiceStatusEx(sch_service, SC_STATUS_PROCESS_INFO, reinterpret_cast<LPBYTE>(&service_status), sizeof(SERVICE_STATUS_PROCESS), &dw_bytes_needed))
 		{
 			utilities::log_type(1);
 			std::cerr << "QueryServiceStatusEx failed.\n";
@@ -59,14 +59,14 @@ namespace service_controller
     int do_query_svc()
     {
         LPQUERY_SERVICE_CONFIG lpsc = nullptr;
-        DWORD dwBytesNeeded, cbBufSize = 0, start_type = -1;
+        DWORD dw_bytes_needed = 0, cb_buf_size = 0, start_type = -1;
 
-        if (!QueryServiceConfig(sch_service, nullptr, 0, &dwBytesNeeded))
+        if (!QueryServiceConfig(sch_service, nullptr, 0, &dw_bytes_needed))
         {
             if (ERROR_INSUFFICIENT_BUFFER == GetLastError())
             {
-                cbBufSize = dwBytesNeeded;
-                lpsc = (LPQUERY_SERVICE_CONFIG)LocalAlloc(LMEM_FIXED, dwBytesNeeded);
+                cb_buf_size = dw_bytes_needed;
+                lpsc = static_cast<LPQUERY_SERVICE_CONFIG>(LocalAlloc(LMEM_FIXED, dw_bytes_needed));
             }
             else
             {
@@ -75,7 +75,7 @@ namespace service_controller
             }
         }
 
-        if (!QueryServiceConfig(sch_service, lpsc, cbBufSize, &dwBytesNeeded))
+        if (!QueryServiceConfig(sch_service, lpsc, cb_buf_size, &dw_bytes_needed))
         {
             utilities::log_type(2);
             std::cerr << "QueryServiceConfig failed.\n";
@@ -93,7 +93,7 @@ namespace service_controller
 	bool config_vgk(const bool disabled)
 	{	
 		if (!ChangeServiceConfig(sch_service, SERVICE_NO_CHANGE, disabled ? SERVICE_DISABLED : SERVICE_SYSTEM_START, SERVICE_NO_CHANGE,
-			NULL, NULL, NULL, NULL, NULL, NULL, NULL))
+			nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr))
 		{
             utilities::log_type(2);
 			std::cerr << "ChangeServiceConfig failed. This may be a result of other functions failing (if they did).\n";
