@@ -7,11 +7,11 @@
 
 namespace service_controller
 {
-	TCHAR sz_svc_name[4] = "vgk";
+    TCHAR sz_svc_name[4] = "vgk";
     SC_HANDLE sch_sc_manager = nullptr;
     SC_HANDLE sch_service = nullptr;
 
-    bool find_manager() 
+    bool find_manager()
     {
         sch_sc_manager = OpenSCManager(nullptr, nullptr, SC_MANAGER_ALL_ACCESS);
 
@@ -40,21 +40,21 @@ namespace service_controller
         CloseServiceHandle(sch_service);
         CloseServiceHandle(sch_sc_manager);
     }
-	
-	int get_vgk_status()
-	{
-		SERVICE_STATUS_PROCESS service_status;
-		DWORD dw_bytes_needed = 0;
 
-		if (!QueryServiceStatusEx(sch_service, SC_STATUS_PROCESS_INFO, reinterpret_cast<LPBYTE>(&service_status), sizeof(SERVICE_STATUS_PROCESS), &dw_bytes_needed))
-		{
-			utilities::log_type(1);
-			std::cerr << "QueryServiceStatusEx failed.\n";
-			return -1;
-		}
+    int get_vgk_status()
+    {
+        SERVICE_STATUS_PROCESS service_status;
+        DWORD dw_bytes_needed = 0;
 
-		return service_status.dwCurrentState;
-	}
+        if (!QueryServiceStatusEx(sch_service, SC_STATUS_PROCESS_INFO, reinterpret_cast<LPBYTE>(&service_status), sizeof(SERVICE_STATUS_PROCESS), &dw_bytes_needed))
+        {
+            utilities::log_type(1);
+            std::cerr << "QueryServiceStatusEx failed.\n";
+            return -1;
+        }
+
+        return service_status.dwCurrentState;
+    }
 
     int do_query_svc()
     {
@@ -81,7 +81,7 @@ namespace service_controller
             std::cerr << "QueryServiceConfig failed.\n";
         }
 
-        if (lpsc != nullptr) 
+        if (lpsc != nullptr)
         {
             start_type = lpsc->dwStartType;
             LocalFree(lpsc);
@@ -90,16 +90,16 @@ namespace service_controller
         return start_type;
     }
 
-	bool config_vgk(const bool disabled)
-	{	
-		if (!ChangeServiceConfig(sch_service, SERVICE_NO_CHANGE, disabled ? SERVICE_DISABLED : SERVICE_SYSTEM_START, SERVICE_NO_CHANGE,
-			nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr))
-		{
+    bool config_vgk(const bool disabled)
+    {
+        if (!ChangeServiceConfig(sch_service, SERVICE_NO_CHANGE, disabled ? SERVICE_DISABLED : SERVICE_SYSTEM_START, SERVICE_NO_CHANGE,
+            nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr))
+        {
             utilities::log_type(2);
-			std::cerr << "ChangeServiceConfig failed. This may be a result of other functions failing (if they did).\n";
-			return false;
-		}
+            std::cerr << "ChangeServiceConfig failed. This may be a result of other functions failing (if they did).\n";
+            return false;
+        }
 
-		return true;
-	}
+        return true;
+    }
 }

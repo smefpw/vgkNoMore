@@ -8,7 +8,7 @@
 #include "termcolor.h"
 
 namespace utilities
-{	
+{
 	inline BOOL is_process_elevated()
 	{
 		HANDLE h_token = nullptr;
@@ -23,11 +23,11 @@ namespace utilities
 				CloseHandle(h_token);
 				return elevation.TokenIsElevated;
 			}
-			
+
 			MessageBox(nullptr, "GetTokenInformation failed. Program will close.", "vgkNoMore", MB_ICONERROR | MB_OK);
 			return FALSE;
 		}
-		
+
 		MessageBox(nullptr, "OpenProcessToken failed. Program will close.", "vgkNoMore", MB_ICONERROR | MB_OK);
 		return FALSE;
 	}
