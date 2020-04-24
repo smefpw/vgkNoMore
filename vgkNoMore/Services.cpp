@@ -7,7 +7,7 @@
 
 namespace service_controller
 {
-	TCHAR sz_svc_name[4] = "vgk";
+    TCHAR sz_svc_name[4] = "vgk";
     SC_HANDLE sch_sc_manager = nullptr;
     SC_HANDLE sch_service = nullptr;
 
