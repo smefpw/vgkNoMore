@@ -49,7 +49,7 @@ int main()
 		utilities::log_type(0);
 		std::cout << "Attempting to enable auto-start for Vanguard.\n";
 
-		if (service_controller::config_vgk(true))
+		if (service_controller::config_vgk(false))
 		{
 			utilities::log_type(0);
 			std::cout << "Auto-start has been set to system controlled state for Vanguard.\n";
@@ -87,7 +87,7 @@ int main()
 		utilities::log_type(0);
 		std::cout << "Attempting to disable auto-start for Vanguard.\n";
 
-		if (service_controller::config_vgk(false))
+		if (service_controller::config_vgk(true))
 		{
 			utilities::log_type(0);
 			std::cout << "Auto-start has been set to disabled state for Vanguard.\n";
