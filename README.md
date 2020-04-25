@@ -7,5 +7,8 @@ The service cannot be stopped in the current session, I have already attempted t
 This program is riddled with inconsistent MessageBox error messages or console error messages. I cannot decide what I like more :/.
 Tbf this whole source is an inconsistent mess.
 
+# Download
+https://github.com/smefpw/vgkNoMore/releases
+
 # Credits:
 https://github.com/ikalnytskyi/termcolor
