@@ -1,6 +1,5 @@
 #include "Services.h"
 
-
 int main()
 {
 	SetConsoleTitle("vgkNoMore v1.0.1-RELEASE | smef.pw");
@@ -22,6 +21,7 @@ int main()
 		return -1;
 	}
 
+	// TODO (whenever i stop being lazy): Clean up this massive if statement.
 	if (service_controller::do_query_svc() == SERVICE_SYSTEM_START && service_controller::get_vgk_status() == SERVICE_RUNNING)
 	{
 		utilities::log_type(0);
@@ -77,6 +77,25 @@ int main()
 		{
 			utilities::log_type(2);
 			std::cout << "Failed to change Vanguard auto-start state to system controlled.\n";
+		}
+	}
+	else if (service_controller::do_query_svc() == SERVICE_SYSTEM_START && service_controller::get_vgk_status() == SERVICE_STOPPED)
+	{
+		utilities::log_type(0);
+		std::cout << "Vanguard is not running and is set to auto-start.\n";
+
+		utilities::log_type(0);
+		std::cout << "Attempting to disable auto-start for Vanguard.\n";
+
+		if (service_controller::config_vgk(false))
+		{
+			utilities::log_type(0);
+			std::cout << "Auto-start has been set to disabled state for Vanguard.\n";
+		}
+		else
+		{
+			utilities::log_type(2);
+			std::cout << "Failed to change Vanguard auto-start state to disabled.\n";
 		}
 	}
 
