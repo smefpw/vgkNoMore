@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vgkNoMore", "vgkNoMore\vgkNoMore.vcxproj", "{B397907E-C32F-4747-BE1E-6EC5910F64CE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vgkChecker", "vgkChecker\vgkChecker.vcxproj", "{AF2C1F55-80C8-4B42-A76D-9FEFBE2F06F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{B397907E-C32F-4747-BE1E-6EC5910F64CE}.Release|x64.Build.0 = Release|x64
 		{B397907E-C32F-4747-BE1E-6EC5910F64CE}.Release|x86.ActiveCfg = Release|Win32
 		{B397907E-C32F-4747-BE1E-6EC5910F64CE}.Release|x86.Build.0 = Release|Win32
+		{AF2C1F55-80C8-4B42-A76D-9FEFBE2F06F0}.Debug|x64.ActiveCfg = Debug|x64
+		{AF2C1F55-80C8-4B42-A76D-9FEFBE2F06F0}.Debug|x64.Build.0 = Debug|x64
+		{AF2C1F55-80C8-4B42-A76D-9FEFBE2F06F0}.Debug|x86.ActiveCfg = Debug|Win32
+		{AF2C1F55-80C8-4B42-A76D-9FEFBE2F06F0}.Debug|x86.Build.0 = Debug|Win32
+		{AF2C1F55-80C8-4B42-A76D-9FEFBE2F06F0}.Release|x64.ActiveCfg = Release|x64
+		{AF2C1F55-80C8-4B42-A76D-9FEFBE2F06F0}.Release|x64.Build.0 = Release|x64
+		{AF2C1F55-80C8-4B42-A76D-9FEFBE2F06F0}.Release|x86.ActiveCfg = Release|Win32
+		{AF2C1F55-80C8-4B42-A76D-9FEFBE2F06F0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
