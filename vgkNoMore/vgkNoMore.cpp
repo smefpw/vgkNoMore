@@ -106,7 +106,7 @@ int main()
 		if (msg_box == IDYES)
 		{
 			service_controller::close_manager();
-			if (!InitiateSystemShutdownA(nullptr, LPSTR("Vanguard service cannot be killed."), 1, TRUE, TRUE))
+			if (!InitiateSystemShutdown(nullptr, LPSTR("Vanguard service cannot be killed."), 1, TRUE, TRUE))
 			{
 				utilities::log_type(1);
 				std::cout << "Restart request failed. Please restart manually. Press enter to close.\n";

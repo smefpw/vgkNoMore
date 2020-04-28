@@ -24,6 +24,7 @@ namespace utilities
 				return elevation.TokenIsElevated;
 			}
 
+			CloseHandle(h_token);
 			MessageBox(nullptr, "GetTokenInformation failed. Program will close.", "vgkNoMore", MB_ICONERROR | MB_OK);
 			return FALSE;
 		}
