@@ -3,7 +3,7 @@ An application which is designed to disable Riot Games Vanguard, by editing it's
 Requires restart.
 
 ~~The service cannot be stopped in the current session, I have already attempted to.~~
-Since the Vanguard update on the 27th of April 2020 the service can now be stopped. I shall update the program shortly.
+Since the Vanguard update on the 27th of April 2020 the service can now be stopped. However this bugs the service. When changing the config for it using my tool please then goto the Vanguard try notification to disable it.
 
 This program is riddled with inconsistent MessageBox error messages or console error messages. I cannot decide what I like more :/.
 Tbf this whole source is an inconsistent mess.
